@@ -11,7 +11,7 @@ const http = require('http')
 const server = http.createServer(app)
 
 const allowedOrigins = process.env.MODE === 'pro' 
-? [process.env.client_customer_production_url, process.env.client_admin_production_url]
+? [process.env.CLIENT_CUSTOMER_PRODUCTION_URL, process.env.CLIENT_ADMIN_PRODUCTION_URL]
 : ['http://localhost:3000', 'http://localhost:3001'];
 
 app.use(cors({
