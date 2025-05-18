@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express')
 const app = express()
 
@@ -37,24 +39,7 @@ cors: {
     credentials: true
 }
 })
-/*
-app.use(cors({
-    origin : process.env.mode === 'pro' ? [process.env.client_customer_production_url,
-    process.env.client_admin_production_url] :
-    ['http://localhost:3000', 'http://localhost:3001'],
-    credentials : true
-}))
-//socket szerver beállítás
-const io = socket(server, {
-    cors: {
-    origin : process.env.mode === 'pro' ? [process.env.client_customer_production_url,
-    process.env.client_admin_production_url] :
-    ['http://localhost:3000', 'http://localhost:3001'],
-    //origin: '*', //összes routes
-    credentials: true
-    }
-})
-*/
+
 var allCustomer = []
 var allSeller = []
 var admin = { }
@@ -149,8 +134,6 @@ soc.on('send_message_seller_to_admin',(msg) => {
         io.emit('activeSeller', allSeller)
     })
 })
-
-require('dotenv').config()
 
 app.use(bodyParser.json())
 app.use(cookieParser())
